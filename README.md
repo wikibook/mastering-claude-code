@@ -22,12 +22,12 @@
 
 예제 코드는 [`examples/`](examples/) 폴더에 프로젝트별로 정리되어 있습니다.
 
-| 프로젝트 | 설명 | 주요 기술 |
-|----------|------|-----------|
-| [first-vibe](examples/first-vibe/) | 바이브 코딩 첫걸음 — 정적 웹 페이지 | HTML |
-| [second-vibe](examples/second-vibe/) | 바이브 코딩 실습 — 인터랙티브 웹 페이지 | HTML, CSS, JavaScript |
-| [token-calculator](examples/token-calculator/) | 토큰 계산기 앱 — 테스트·플러그인·스킬 활용 | React, Vite, Jest, Playwright |
-| [ai-diary](examples/ai-diary/) | AI가 위로하는 일기장 풀스택 서비스 | Next.js, NestJS, Prisma, Supabase |
+| 장 | 프로젝트 | 설명 | 주요 기술 |
+|----|----------|------|-----------|
+| 3장 | [ch03-first-vibe](examples/ch03-first-vibe/) | 바이브 코딩 첫걸음 — 정적 웹 페이지 | HTML |
+| 3장 | [ch03-second-vibe](examples/ch03-second-vibe/) | 바이브 코딩 실습 — 인터랙티브 웹 페이지 | HTML, CSS, JavaScript |
+| 4장 | [ch04-token-calculator](examples/ch04-token-calculator/) | 토큰 계산기 앱 — MCP·테스트·플러그인·스킬 활용 | React, Vite, Jest, Playwright |
+| 5장 | [ch05-ai-diary](examples/ch05-ai-diary/) | AI가 위로하는 일기장 풀스택 서비스 | Next.js, NestJS, Prisma, Supabase |
 
 > 각 프로젝트 폴더의 `README.md` / `CLAUDE.md`에서 자세한 설명과 실행 방법을 확인할 수 있습니다.
 
@@ -38,7 +38,7 @@
 이를 복사해 본인의 값으로 채워 사용하세요.
 
 ```bash
-cp examples/ai-diary/backend/.env.example examples/ai-diary/backend/.env
+cp examples/ch05-ai-diary/backend/.env.example examples/ch05-ai-diary/backend/.env
 ```
 
 ## 🗂️ 저장소 구성
@@ -49,10 +49,10 @@ mastering-claude-code/
 ├── cover.jpg          # 책 표지 이미지
 ├── .gitignore
 └── examples/          # 장별 예제 코드
-    ├── first-vibe/
-    ├── second-vibe/
-    ├── token-calculator/
-    └── ai-diary/
+    ├── ch03-first-vibe/
+    ├── ch03-second-vibe/
+    ├── ch04-token-calculator/
+    └── ch05-ai-diary/
 ```
 
 ## 🚀 시작하기
