@@ -1,0 +1,27 @@
+# 의존성 / 빌드 산출물
+node_modules/
+dist/
+build/
+.next/
+.turbo/
+.vercel/
+
+# 환경 변수 (실제 비밀이 들어갑니다 — 절대 커밋 금지)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.vercel
+# .env.example 은 템플릿이므로 추적합니다
+!.env.example
+
+# OS / IDE
+.DS_Store
+.idea/
+*.log
+
+# 테스트 / 캐시
+coverage/
+.cache/
+playwright-report/
+test-results/

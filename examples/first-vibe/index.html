@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root@portfolio:~# Terminal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(0, 255, 0, 0) 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+
+        .terminal {
+            padding: 20px;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .terminal::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .terminal::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        .terminal::-webkit-scrollbar-thumb {
+            background: #00ff00;
+            border-radius: 5px;
+        }
+
+        .header {
+            border: 2px solid #00ff00;
+            padding: 10px;
+            margin-bottom: 20px;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.98; }
+            100% { opacity: 1; }
+        }
+
+        .ascii-art {
+            font-size: 10px;
+            line-height: 1.2;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .output-line {
+            margin: 5px 0;
+            word-wrap: break-word;
+        }
+
+        .prompt {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .command {
+            color: #00ff00;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        #command-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            flex: 1;
+            outline: none;
+            text-shadow: 0 0 5px #00ff00;
+            caret-color: #00ff00;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #00ff00;
+            animation: blink 1s infinite;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .success {
+            color: #00ff00;
+        }
+
+        .error {
+            color: #ff0000;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        .info {
+            color: #00ffff;
+        }
+
+        .warning {
+            color: #ffff00;
+        }
+
+        .project-item {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            border: 1px solid #00ff00;
+            padding: 2px 8px;
+            margin: 2px;
+            font-size: 12px;
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        a:hover {
+            color: #ffff00;
+            text-shadow: 0 0 5px #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="terminal" id="terminal">
+        <div class="header">
+            <pre class="ascii-art">
+ ╔═══════════════════════════════════════════════════════════════╗
+ ║  ██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗            ║
+ ║  ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗           ║
+ ║  ███████║███████║██║     █████╔╝ █████╗  ██████╔╝           ║
+ ║  ██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗           ║
+ ║  ██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║           ║
+ ║  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝           ║
+ ║                                                               ║
+ ║  ████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗   ║
+ ║  ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗  ║
+ ║     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║  ║
+ ║     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║  ║
+ ║     ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║  ║
+ ║     ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝  ║
+ ╚═══════════════════════════════════════════════════════════════╝
+            </pre>
+            <div>DEVELOPER PORTFOLIO v2.0.1 | SECURE CONNECTION ESTABLISHED</div>
+            <div>System: PORTFOLIO-OS | Status: ONLINE | Access: GRANTED</div>
+        </div>
+
+        <div id="output"></div>
+
+        <div class="input-line">
+            <span class="prompt">root@portfolio:~#</span>
+            <input type="text" id="command-input" autofocus autocomplete="off">
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const input = document.getElementById('command-input');
+        const terminal = document.getElementById('terminal');
+
+        const commands = {
+            help: {
+                description: 'Available commands list',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">AVAILABLE COMMANDS:</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+  <span class="warning">help</span>       - Display this help message
+  <span class="warning">about</span>      - Information about me
+  <span class="warning">skills</span>     - Technical skills and expertise
+  <span class="warning">projects</span>   - View my projects portfolio
+  <span class="warning">experience</span> - Work experience and history
+  <span class="warning">contact</span>    - Contact information
+  <span class="warning">social</span>     - Social media links
+  <span class="warning">clear</span>      - Clear terminal screen
+  <span class="warning">hack</span>       - Try to hack the system :)
+  <span class="warning">matrix</span>     - Enter the Matrix
+
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+Type any command to get started!
+                    `;
+                }
+            },
+            about: {
+                description: 'About me',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">ABOUT ME</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">Name:</span> Your Name
+<span class="warning">Role:</span> Full Stack Developer / Hacker
+<span class="warning">Location:</span> Seoul, South Korea
+<span class="warning">Status:</span> Available for hire
+
+<span class="success">Bio:</span>
+Passionate developer with expertise in creating innovative
+solutions. I love clean code, cybersecurity, and building
+things that matter. When I'm not coding, I'm probably
+exploring new technologies or contributing to open source.
+
+<span class="success">Interests:</span>
+→ Web Development
+→ Cybersecurity
+→ AI/ML
+→ Open Source
+→ CTF Competitions
+                    `;
+                }
+            },
+            skills: {
+                description: 'Technical skills',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">TECHNICAL SKILLS</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">[Frontend]</span>
+<span class="skill-tag">JavaScript</span> <span class="skill-tag">TypeScript</span> <span class="skill-tag">React</span> <span class="skill-tag">Vue.js</span>
+<span class="skill-tag">Next.js</span> <span class="skill-tag">HTML5</span> <span class="skill-tag">CSS3</span> <span class="skill-tag">Tailwind</span>
+
+<span class="warning">[Backend]</span>
+<span class="skill-tag">Node.js</span> <span class="skill-tag">Python</span> <span class="skill-tag">Express</span> <span class="skill-tag">Django</span>
+<span class="skill-tag">FastAPI</span> <span class="skill-tag">GraphQL</span> <span class="skill-tag">REST API</span>
+
+<span class="warning">[Database]</span>
+<span class="skill-tag">PostgreSQL</span> <span class="skill-tag">MongoDB</span> <span class="skill-tag">Redis</span> <span class="skill-tag">MySQL</span>
+
+<span class="warning">[DevOps & Tools]</span>
+<span class="skill-tag">Docker</span> <span class="skill-tag">Kubernetes</span> <span class="skill-tag">AWS</span> <span class="skill-tag">Git</span>
+<span class="skill-tag">Linux</span> <span class="skill-tag">CI/CD</span> <span class="skill-tag">Nginx</span>
+
+<span class="warning">[Security]</span>
+<span class="skill-tag">Penetration Testing</span> <span class="skill-tag">OWASP</span> <span class="skill-tag">Cryptography</span>
+                    `;
+                }
+            },
+            projects: {
+                description: 'My projects',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">PROJECTS PORTFOLIO</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">[1] E-Commerce Platform</span>
+    → Full-stack online shopping platform
+    → Tech: React, Node.js, MongoDB, Stripe
+    → <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a> | <a href="#" target="_blank">Live Demo</a>
+
+<span class="warning">[2] Real-time Chat Application</span>
+    → WebSocket-based messaging app
+    → Tech: Vue.js, Socket.io, Redis, Express
+    → <a href="https://github.com/yourusername/project2" target="_blank">GitHub</a> | <a href="#" target="_blank">Live Demo</a>
+
+<span class="warning">[3] Security Audit Tool</span>
+    → Automated vulnerability scanner
+    → Tech: Python, Selenium, SQLAlchemy
+    → <a href="https://github.com/yourusername/project3" target="_blank">GitHub</a>
+
+<span class="warning">[4] AI Content Generator</span>
+    → Machine learning powered content creation
+    → Tech: Python, TensorFlow, FastAPI, React
+    → <a href="https://github.com/yourusername/project4" target="_blank">GitHub</a> | <a href="#" target="_blank">Live Demo</a>
+
+<span class="warning">[5] Portfolio Terminal</span>
+    → This awesome terminal you're using!
+    → Tech: HTML, CSS, Vanilla JavaScript
+    → <a href="https://github.com/yourusername/portfolio" target="_blank">GitHub</a>
+                    `;
+                }
+            },
+            experience: {
+                description: 'Work experience',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">WORK EXPERIENCE</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">[Senior Full Stack Developer]</span>
+Company: Tech Corp | 2022 - Present
+→ Led development of microservices architecture
+→ Improved system performance by 40%
+→ Mentored junior developers
+
+<span class="warning">[Full Stack Developer]</span>
+Company: StartUp Inc | 2020 - 2022
+→ Built RESTful APIs and responsive web apps
+→ Implemented CI/CD pipelines
+→ Collaborated with cross-functional teams
+
+<span class="warning">[Junior Developer]</span>
+Company: Web Solutions | 2018 - 2020
+→ Developed client websites and web applications
+→ Learned modern development practices
+→ Contributed to open source projects
+                    `;
+                }
+            },
+            contact: {
+                description: 'Contact information',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">CONTACT INFORMATION</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">Email:</span> <a href="mailto:your.email@example.com">your.email@example.com</a>
+<span class="warning">Phone:</span> +82 10-1234-5678
+<span class="warning">Location:</span> Seoul, South Korea
+
+<span class="success">Let's connect and build something amazing together!</span>
+                    `;
+                }
+            },
+            social: {
+                description: 'Social media links',
+                execute: () => {
+                    return `
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="success">SOCIAL MEDIA</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="warning">GitHub:</span> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
+<span class="warning">LinkedIn:</span> <a href="https://linkedin.com/in/yourusername" target="_blank">linkedin.com/in/yourusername</a>
+<span class="warning">Twitter:</span> <a href="https://twitter.com/yourusername" target="_blank">twitter.com/yourusername</a>
+<span class="warning">Blog:</span> <a href="https://yourblog.com" target="_blank">yourblog.com</a>
+<span class="warning">Portfolio:</span> <a href="https://yourportfolio.com" target="_blank">yourportfolio.com</a>
+                    `;
+                }
+            },
+            clear: {
+                description: 'Clear terminal',
+                execute: () => {
+                    output.innerHTML = '';
+                    return '';
+                }
+            },
+            hack: {
+                description: 'Hack attempt',
+                execute: () => {
+                    return `
+<span class="error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="error">⚠ UNAUTHORIZED ACCESS DETECTED ⚠</span>
+<span class="error">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+Initializing security protocols...
+[████████████████████████████] 100%
+
+<span class="warning">Just kidding! 😄</span>
+<span class="success">Nice try though. I like your style!</span>
+
+This portfolio is hack-proof... or is it? 🤔
+                    `;
+                }
+            },
+            matrix: {
+                description: 'Enter the Matrix',
+                execute: () => {
+                    const matrix = [];
+                    for (let i = 0; i < 15; i++) {
+                        const chars = '01';
+                        let line = '';
+                        for (let j = 0; j < 60; j++) {
+                            line += chars[Math.floor(Math.random() * chars.length)];
+                        }
+                        matrix.push(line);
+                    }
+                    return `
+<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="glitch">ENTERING THE MATRIX...</span>
+<span class="success">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+${matrix.join('\n')}
+
+<span class="info">Wake up, Neo...</span>
+                    `;
+                }
+            }
+        };
+
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        // Welcome message
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                typeWriter(`
+<span class="success">Welcome to the Developer Terminal Portfolio!</span>
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+System initialization... <span class="success">[OK]</span>
+Loading user profile... <span class="success">[OK]</span>
+Establishing secure connection... <span class="success">[OK]</span>
+
+Type '<span class="warning">help</span>' to see available commands.
+Type '<span class="warning">about</span>' to learn more about me.
+
+<span class="info">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+                `, 0);
+            }, 500);
+        });
+
+        function typeWriter(text, index) {
+            if (index === 0) {
+                const div = document.createElement('div');
+                div.className = 'output-line';
+                div.innerHTML = text;
+                output.appendChild(div);
+                scrollToBottom();
+            }
+        }
+
+        function scrollToBottom() {
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function executeCommand(cmd) {
+            const trimmedCmd = cmd.trim().toLowerCase();
+
+            if (trimmedCmd === '') return '';
+
+            if (commands[trimmedCmd]) {
+                return commands[trimmedCmd].execute();
+            } else {
+                return `<span class="error">bash: ${cmd}: command not found</span>
+Try '<span class="warning">help</span>' to see available commands.`;
+            }
+        }
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value;
+
+                // Display command
+                const commandLine = document.createElement('div');
+                commandLine.className = 'output-line';
+                commandLine.innerHTML = `<span class="prompt">root@portfolio:~#</span> <span class="command">${cmd}</span>`;
+                output.appendChild(commandLine);
+
+                // Execute and display result
+                const result = executeCommand(cmd);
+                if (result) {
+                    const resultLine = document.createElement('div');
+                    resultLine.className = 'output-line';
+                    resultLine.innerHTML = result;
+                    output.appendChild(resultLine);
+                }
+
+                // Add to history
+                if (cmd.trim()) {
+                    commandHistory.unshift(cmd);
+                    historyIndex = -1;
+                }
+
+                // Clear input
+                input.value = '';
+                scrollToBottom();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                } else if (historyIndex === 0) {
+                    historyIndex = -1;
+                    input.value = '';
+                }
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                const partial = input.value.toLowerCase();
+                const matches = Object.keys(commands).filter(cmd => cmd.startsWith(partial));
+                if (matches.length === 1) {
+                    input.value = matches[0];
+                }
+            }
+        });
+
+        // Keep input focused
+        terminal.addEventListener('click', () => {
+            input.focus();
+        });
+
+        // Prevent losing focus
+        input.addEventListener('blur', () => {
+            setTimeout(() => input.focus(), 0);
+        });
+    </script>
+</body>
+</html>

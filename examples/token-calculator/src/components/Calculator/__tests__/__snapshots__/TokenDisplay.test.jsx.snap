@@ -1,0 +1,595 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TokenDisplay Component Snapshot tests should match snapshot with large values 1`] = `
+<div
+  class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
+>
+  <div
+    class="p-4 rounded-xl bg-indigo-600 text-white"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hash w-4 h-4 text-indigo-200"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="4"
+          x2="20"
+          y1="9"
+          y2="9"
+        />
+        <line
+          x1="4"
+          x2="20"
+          y1="15"
+          y2="15"
+        />
+        <line
+          x1="10"
+          x2="8"
+          y1="3"
+          y2="21"
+        />
+        <line
+          x1="16"
+          x2="14"
+          y1="3"
+          y2="21"
+        />
+      </svg>
+      <span
+        class="text-xs text-indigo-200"
+      >
+        토큰 수
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all "
+    >
+      1,000,000
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 포함)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      5,000,000
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 제외)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      4,500,000
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hard-drive w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="22"
+          x2="2"
+          y1="12"
+          y2="12"
+        />
+        <path
+          d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+        />
+        <line
+          x1="6"
+          x2="6.01"
+          y1="16"
+          y2="16"
+        />
+        <line
+          x1="10"
+          x2="10.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        바이트 크기
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      10,485,760 B
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TokenDisplay Component Snapshot tests should match snapshot with typical values 1`] = `
+<div
+  class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
+>
+  <div
+    class="p-4 rounded-xl bg-indigo-600 text-white"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hash w-4 h-4 text-indigo-200"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="4"
+          x2="20"
+          y1="9"
+          y2="9"
+        />
+        <line
+          x1="4"
+          x2="20"
+          y1="15"
+          y2="15"
+        />
+        <line
+          x1="10"
+          x2="8"
+          y1="3"
+          y2="21"
+        />
+        <line
+          x1="16"
+          x2="14"
+          y1="3"
+          y2="21"
+        />
+      </svg>
+      <span
+        class="text-xs text-indigo-200"
+      >
+        토큰 수
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all "
+    >
+      100
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 포함)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      500
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 제외)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      450
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hard-drive w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="22"
+          x2="2"
+          y1="12"
+          y2="12"
+        />
+        <path
+          d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+        />
+        <line
+          x1="6"
+          x2="6.01"
+          y1="16"
+          y2="16"
+        />
+        <line
+          x1="10"
+          x2="10.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        바이트 크기
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      1,024 B
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TokenDisplay Component Snapshot tests should match snapshot with zero values 1`] = `
+<div
+  class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"
+>
+  <div
+    class="p-4 rounded-xl bg-indigo-600 text-white"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hash w-4 h-4 text-indigo-200"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="4"
+          x2="20"
+          y1="9"
+          y2="9"
+        />
+        <line
+          x1="4"
+          x2="20"
+          y1="15"
+          y2="15"
+        />
+        <line
+          x1="10"
+          x2="8"
+          y1="3"
+          y2="21"
+        />
+        <line
+          x1="16"
+          x2="14"
+          y1="3"
+          y2="21"
+        />
+      </svg>
+      <span
+        class="text-xs text-indigo-200"
+      >
+        토큰 수
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all "
+    >
+      0
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 포함)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      0
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-type w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 4v16"
+        />
+        <path
+          d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"
+        />
+        <path
+          d="M9 20h6"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        글자 수 (공백 제외)
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      0
+    </div>
+  </div>
+  <div
+    class="p-4 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+  >
+    <div
+      class="flex items-center gap-2 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-hard-drive w-4 h-4 text-slate-500 dark:text-slate-400"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="22"
+          x2="2"
+          y1="12"
+          y2="12"
+        />
+        <path
+          d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+        />
+        <line
+          x1="6"
+          x2="6.01"
+          y1="16"
+          y2="16"
+        />
+        <line
+          x1="10"
+          x2="10.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+      <span
+        class="text-xs text-slate-500 dark:text-slate-400"
+      >
+        바이트 크기
+      </span>
+    </div>
+    <div
+      class="text-2xl font-bold transition-all text-slate-900 dark:text-slate-100"
+    >
+      0 B
+    </div>
+  </div>
+</div>
+`;

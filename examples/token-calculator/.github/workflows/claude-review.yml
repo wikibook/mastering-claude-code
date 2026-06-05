@@ -1,0 +1,45 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          track_progress: true
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            **모든 리뷰 코멘트는 반드시 한국어로 작성해주세요.** (인라인 코멘트와 요약 모두)
+
+            이 PR을 리뷰하고, 라인별 이슈는 `mcp__github_inline_comment__create_inline_comment` 도구로, 전체 요약은 `mcp__github__update_claude_comment` 도구로 작성해주세요.
+
+            다음 항목을 중심으로 검토해주세요:
+            - 코드 품질, 가독성, 유지보수성
+            - 잠재적 버그, 엣지 케이스, 로직 오류
+            - 보안 이슈 (입력값 검증, XSS, 인젝션, 시크릿 처리)
+            - 성능 고려사항
+            - 신규/변경 코드의 테스트 커버리지
+            - CLAUDE.md에 정의된 프로젝트 규약 준수 여부
+
+            구체적으로 작성해주세요: 파일명과 라인 번호를 명시하고, 실질적인 개선안을 제시해주세요.
+            코드에 큰 영향이 없는 사소한 지적은 생략해주세요.
+          claude_args: '--model claude-opus-4-7 --allowed-tools "mcp__github__update_claude_comment,mcp__github_inline_comment__create_inline_comment,mcp__github__create_issue_comment,Bash(gh pr:*),Bash(gh api:*)"'

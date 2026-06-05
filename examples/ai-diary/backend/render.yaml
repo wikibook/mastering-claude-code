@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-diary-backend
+    runtime: node
+    region: singapore
+    buildCommand: npm ci --include=dev && npm run build && npx prisma generate
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
