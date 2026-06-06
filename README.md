@@ -68,11 +68,21 @@ mastering-claude-code/
 
 ### 1. 클로드 코드 설치
 
-[Node.js](https://nodejs.org/)(LTS 버전 권장)가 설치된 상태에서 다음을 실행합니다.
+공식 권장 방식은 **네이티브 설치**입니다.
+
+**macOS · Linux · WSL**
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
+
+**Windows (PowerShell)**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+> 네이티브 설치는 백그라운드에서 자동 업데이트됩니다. Homebrew(`brew install --cask claude-code`), WinGet, npm 등 다른 방법은 [공식 문서](https://code.claude.com/docs/en/setup)를 참고하세요. 터미널보다 GUI를 선호하면 [데스크톱 앱](https://code.claude.com/docs/en/desktop-quickstart)도 있습니다.
 
 설치 후 프로젝트 폴더에서 실행합니다. 처음 실행하면 로그인/인증 절차가 안내됩니다.
 
@@ -81,6 +91,8 @@ claude
 ```
 
 문제가 있으면 `claude doctor`로 설치·설정을 진단할 수 있습니다. 자세한 사용법은 책 본문과 [공식 문서](https://code.claude.com/docs)를 참고하세요.
+
+> ℹ️ 클로드 코드 사용에는 Claude Pro/Max/Team/Enterprise 또는 Console 계정이 필요합니다(무료 플랜 제외). 자세한 내용은 [인증 문서](https://code.claude.com/docs/en/authentication)를 참고하세요.
 
 > 💡 자주 쓰는 명령어·단축키는 [치트시트](updates/cheatsheet.md)에 정리되어 있습니다.
 

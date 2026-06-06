@@ -8,24 +8,31 @@
 
 ### Q. 클로드 코드는 어떻게 설치하나요?
 
-Node.js(LTS 권장)가 설치된 상태에서 다음을 실행합니다.
+공식 권장 방식은 **네이티브 설치**입니다(자동 업데이트됨).
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+# macOS · Linux · WSL
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Windows (PowerShell)
+irm https://claude.ai/install.ps1 | iex
 ```
 
 설치 후 프로젝트 폴더에서 `claude`를 실행하면 시작됩니다. 설치·설정에 문제가 있으면 `claude doctor`로 진단할 수 있습니다.
 
+> Homebrew, WinGet, npm 등 다른 설치 방법은 [공식 설치 문서](https://code.claude.com/docs/en/setup)를 참고하세요. npm으로 설치하려면 Node.js 18+ 가 필요합니다(`npm install -g @anthropic-ai/claude-code`).
+
 ### Q. `command not found: claude` 가 나옵니다.
 
-전역 설치된 npm 패키지 경로가 PATH에 없을 때 발생합니다.
+설치된 실행 파일 경로가 PATH에 없을 때 발생합니다.
 
-- `npm config get prefix`로 전역 경로를 확인하고, 그 아래 `bin` 디렉터리가 PATH에 포함됐는지 확인하세요.
-- 또는 `npx @anthropic-ai/claude-code`로 실행해볼 수 있습니다.
+- **네이티브 설치**: `~/.local/bin`이 PATH에 포함됐는지 확인하세요. 터미널을 새로 열거나 셸 설정(`.zshrc` 등)을 다시 불러오세요.
+- **npm 설치**: `npm config get prefix`로 전역 경로를 확인하고 그 아래 `bin`이 PATH에 있는지 확인하세요.
+- 그래도 안 되면 `claude doctor`로 진단하거나 [설치 문제 해결 문서](https://code.claude.com/docs/en/troubleshoot-install)를 참고하세요.
 
 ### Q. 로그인/인증은 어떻게 하나요?
 
-처음 `claude`를 실행하면 인증 절차가 안내됩니다. 안내에 따라 브라우저 로그인 또는 API 키 설정을 진행하세요. 자세한 방법은 [공식 문서](https://code.claude.com/docs)를 참고하세요.
+처음 `claude`를 실행하면 브라우저 로그인 절차가 안내됩니다. 클로드 코드 사용에는 Claude **Pro/Max/Team/Enterprise** 또는 **Console** 계정이 필요합니다(무료 Claude.ai 플랜은 제외). Amazon Bedrock·Google Vertex AI 등 외부 API 제공자도 사용할 수 있습니다. 자세한 방법은 [인증 문서](https://code.claude.com/docs/en/authentication)를 참고하세요.
 
 ---
 
