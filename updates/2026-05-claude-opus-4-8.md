@@ -37,6 +37,8 @@
 
 claude.ai와 Cowork에 effort 슬라이더가 추가되었습니다. 높게 설정하면 더 자주 깊게 사고해 응답 품질이 올라가고, 낮게 설정하면 속도가 빨라지고 사용량(rate limit)을 아낍니다.
 
+![effort 슬라이더: Speed ↔ Intelligence (low / medium / high / xhigh / max)](images/effort.png)
+
 - API에서는 `output_config: { effort: "low" | "medium" | "high" | "xhigh" | "max" }`로 제어합니다.
 - 코딩·에이전트 작업에는 `high` 또는 `xhigh`가 권장됩니다(`xhigh`는 클로드 코드의 기본값).
 - Opus 4.8에서는 무작정 `xhigh`/`max`로 올리기보다 `high`를 기본으로 두고 작업별로 조정하는 편이 좋습니다.
