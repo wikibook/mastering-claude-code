@@ -15,6 +15,12 @@
 | 2026-06 | [코딩 성능 비교: SWE-bench](2026-06-coding-benchmark-swe-bench.md) | 2·4장 |
 | 2026-05 | [Claude Opus 4.8 업데이트](2026-05-claude-opus-4-8.md) | 2·4·5장 |
 
+## 참조 문서
+
+| 문서 | 설명 |
+|------|------|
+| [치트시트](cheatsheet.md) | 클로드 코드 명령어·단축키·설정 파일 한눈에 보기 |
+
 ---
 
 > 정확한 최신 내용은 항상 [Anthropic 공식 문서](https://docs.claude.com/)를 함께 확인하세요.

@@ -66,31 +66,38 @@ mastering-claude-code/
 
 ## 🚀 시작하기
 
-### 클로드 코드 설치
+### 1. 클로드 코드 설치
+
+[Node.js](https://nodejs.org/)(LTS 버전 권장)가 설치된 상태에서 다음을 실행합니다.
 
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
 
-설치 후 프로젝트 폴더에서 다음 명령으로 실행합니다.
+설치 후 프로젝트 폴더에서 실행합니다. 처음 실행하면 로그인/인증 절차가 안내됩니다.
 
 ```bash
 claude
 ```
 
-자세한 설치 및 사용법은 책 본문과 [공식 문서](https://docs.anthropic.com/en/docs/claude-code)를 참고하세요.
+문제가 있으면 `claude doctor`로 설치·설정을 진단할 수 있습니다. 자세한 사용법은 책 본문과 [공식 문서](https://code.claude.com/docs)를 참고하세요.
 
-### 예제 코드 내려받기
+> 💡 자주 쓰는 명령어·단축키는 [치트시트](updates/cheatsheet.md)에 정리되어 있습니다.
+
+### 2. 예제 코드 내려받기
 
 ```bash
 git clone https://github.com/wikibook/mastering-claude-code.git
 cd mastering-claude-code
 ```
 
-## 💬 문의 및 정오표
+각 예제 실행 방법은 해당 폴더의 `README.md`를 참고하세요.
 
-- 책 내용에 대한 문의나 오류 제보는 이 저장소의 [Issues](https://github.com/wikibook/mastering-claude-code/issues)에 남겨주세요.
-- 정오표 및 추가 정보는 위키북스 도서 페이지에서 확인할 수 있습니다.
+## 💬 문의 · FAQ · 정오표
+
+- **막히는 부분이 있나요?** 먼저 [자주 묻는 질문(FAQ)](FAQ.md)을 확인해보세요.
+- **책에서 오류를 발견했나요?** [정오표(errata)](errata.md)를 확인하고, 없는 내용이면 [Issues](https://github.com/wikibook/mastering-claude-code/issues)에 제보해주세요.
+- 그 외 문의도 [Issues](https://github.com/wikibook/mastering-claude-code/issues)에 남겨주세요.
 
 ## 📄 라이선스
 
