@@ -21,6 +21,7 @@
 
 | 날짜 | 제목 | 관련 장 |
 |------|------|---------|
+| 2026-07 | [Claude Opus 5 업데이트](updates/2026-07-claude-opus-5.md) | 2·4·5장 |
 | 2026-06 | [코딩 성능 비교: SWE-bench](updates/2026-06-coding-benchmark-swe-bench.md) | 2·4장 |
 | 2026-05 | [Claude Opus 4.8 업데이트](updates/2026-05-claude-opus-4-8.md) | 2·4·5장 |
 
